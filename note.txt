@@ -1,0 +1,9 @@
+Aujourd’hui, j’ai étudié :
+- Files et piles.
+- Listes abstraites et récursivité.
+- Classes, objets et méthodes.
+- Dictionnaires et recherche O(1).
+
+Prochaine priorité :
+Faire fonctionner proprement une seule implémentation de pile,
+puis tester les listes récursives.
