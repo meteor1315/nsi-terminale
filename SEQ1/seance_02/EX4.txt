@@ -1,0 +1,53 @@
+
+
+Soit V un ensemble des valeurs d’éléments (comme des entiers, ou des chaînes de caractères par exemple).
+On appelle type Liste de valeurs de V l’ensemble des listes dont les éléments sont dans V.
+Ensemble définis et utilisés : Liste, V, Rang (ensemble des rangs y compris nil qui est une position fictive).
+Il est à noter qu’il n'existe pas de normalisation pour les primitives de manipulation de listes.
+Description fonctionnelle des opérations primitives de base communément rencontrées :
+
+    - cree_liste:() → Liste(V)
+        fonction retournant la liste vide. 
+    - ajouter_en_tete: VxListe(V) → Liste(V)
+        insérer un élément en tête de liste. 
+    - supprimer_en_tete : Liste(V) → Liste(V) 
+        supprime l’élément en tête de liste 
+    - est_vide : Liste(V) → Booléen
+        fonction retournant vrai si la liste est vide et faux sinon 
+    - tête : Liste(V) → V
+        fonction retournant la tête de liste 
+    - queue : Liste(V) → Liste(V)
+        fonction retournant la liste privée de son élément de tête. 
+    
+Écrire les instructions permettant de créer une liste contenant la liste des voyelles françaises dans l’ordre
+alphabétique L2 = < ‘a’ ; <‘e’ ; <‘i’ ; <‘o’ ; <‘u’ ; <‘y’ ; ∅ >>>>>>.
+Quelle suite d’instructions permet d’accéder à la voyelle ‘i’ ?
+
+L2 = cree_liste()  # Crée une liste vide.
+est_vide(L2)  # Vérifie que la liste est vide ; le résultat attendu est vrai.
+
+# On ajoute les éléments en tête : il faut donc commencer par la dernière
+# voyelle pour obtenir finalement l'ordre alphabétique.
+ajouter_en_tete(a, ajouter_en_tete(e, ajouter_en_tete(i, ajouter_en_tete(o, ajouter_en_tete(u, ajouter_en_tete(y, L2))))))
+# Cette expression construit une nouvelle liste, mais elle n'est pas stockée
+# dans L2. Il faudrait écrire : L2 = ajouter_en_tete(...).
+
+queue(i, L2)  # Incorrect : queue reçoit une liste, pas la valeur i.
+
+
+Correction du raisonnement
+==========================
+
+# ajouter_en_tete ajoute toujours un élément au début de la liste.
+# Il faut donc ajouter les voyelles dans l'ordre inverse : y, u, o, i, e, a.
+L2 = cree_liste()  # Crée la liste vide.
+L2 = ajouter_en_tete('y', L2)  # La liste contient : y.
+L2 = ajouter_en_tete('u', L2)  # La liste contient : u, y.
+L2 = ajouter_en_tete('o', L2)  # La liste contient : o, u, y.
+L2 = ajouter_en_tete('i', L2)  # La liste contient : i, o, u, y.
+L2 = ajouter_en_tete('e', L2)  # La liste contient : e, i, o, u, y.
+L2 = ajouter_en_tete('a', L2)  # La liste contient : a, e, i, o, u, y.
+
+# queue retire la tête de la liste. Deux appels retirent donc a puis e.
+# tête lit ensuite le premier élément restant, qui est i.
+tête(queue(queue(L2)))  # Résultat : i.
