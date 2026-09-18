@@ -1,0 +1,2 @@
+Objectifs de la séance :
+Réaliser un programme simulant le déplacement dans l’historique récent d’un navigateur à l’aide de piles.
