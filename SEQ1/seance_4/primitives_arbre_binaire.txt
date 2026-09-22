@@ -1,0 +1,11 @@
+Les opérations primitives : 
+
+creer_arbre(): crée un arbre binaire vide
+creer_arbre_racine(v): crée un arbre binaire dont la racine est v et dont les sous-arbre gauche et droit sont vides 
+est_vide(A): retourne vrai si l'arbre A est vide sinon faux 
+sous_arbre_gauche(A): retourne le sous-arbre gauche de A
+sous_arbre_droit(A): retourne le sous-arbre droit de A 
+modifie_racine(A, v): modifie la racine de l'arbre binaire A par v
+modifie_arbre_gauche(A, G): remplace le sous-arbre gauche de l'arbre binaire A par l'arbre binaire G
+modifie_arbre_gauche(A, D): remplace le sous-arbre droit de l'arbre binaire A par l'arbre binaire D  
+
