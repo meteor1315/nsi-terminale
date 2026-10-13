@@ -1,0 +1,21 @@
+
+1. 
+
+p1=creer_liste() 
+ajouter_en_tete((2,0), p1)
+ajouter_en_tete((-1,1), p1)
+ajouter_en_tete((2,3), p1) 
+
+2. 
+
+l'instruction queue(p1) retourne la liste  : (-1, 1) -> (2,0) -> 0 
+
+3. 
+
+fonction valuation(liste, x) 
+    Si est_vide(liste) est vrai 
+        retourner 0 
+    Sinon
+        temp=tete(liste)
+        retourner temp[0]*x^temp[1]+valuation(queue(liste), x)
+    Finsi
