@@ -1,15 +1,18 @@
 # NSI Terminale
 
-Cours, exercices et notes de NSI en terminale.
+Dépôt de travail pour la spécialité Numérique et Sciences Informatiques en Terminale.
 
-## Organisation
+## Contenu
 
-- `SEQ1/seance_01/` : dictionnaires et notions associees.
-- `SEQ1/seance_02/` : files, piles et exercices de la seance 2.
+### Séquence 1
 
-Les scripts Python peuvent etre executes avec Python 3 :
+- `SEQ1/seance_01/` : dictionnaires et notions associées
+- `SEQ1/seance_02/` : files, piles et exercices de la séance 2
+- `SEQ1/seance_03/` : historique de navigation avec `deque`
+- `SEQ1/seance_4/` : arbres binaires et classe `Noeud`
 
-```bash
-python3 SEQ1/seance_02/files.py
-python3 SEQ1/seance_02/piles.py
-```
+## Technologies
+
+- Python 3
+- Git
+- GitHub
