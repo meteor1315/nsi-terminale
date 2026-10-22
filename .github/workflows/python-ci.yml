@@ -1,0 +1,39 @@
+name: Vérification Python
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Vérifier la syntaxe Python
+        run: python -m compileall -q SEQ1 SEQ2
+
+      - name: Tester la calculatrice
+        run: |
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          chemin = Path("SEQ2/seance_01/calculatrice/calculatrice.py")
+          specification = importlib.util.spec_from_file_location("calculatrice", chemin)
+          calculatrice = importlib.util.module_from_spec(specification)
+          specification.loader.exec_module(calculatrice)
+
+          expression = calculatrice.decoupage("5+(2+3)")
+          assert calculatrice.calculer(expression) == 10
+          PY
