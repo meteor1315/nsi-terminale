@@ -1,3 +1,5 @@
+# Indices utilisés pour accéder aux éléments d'une expression découpée :
+# G désigne la partie gauche, D la partie droite et OP l'opérateur.
 G = 0
 D = 1
 OP = 2
@@ -15,10 +17,17 @@ def isnumber(s):
 
 # Supprime les parenthèses qui entourent toute l'expression.
 def nettoyer(expression):
+    # Conserve la longueur de l'expression pour accéder à son dernier caractère.
     n = len(expression)
+
+    # Représente la profondeur actuelle dans les parenthèses.
     priorite = 0
+
+    # Une expression vide ne peut pas être nettoyée davantage.
     if expression =="":
                 return expression
+
+    # Compte les parenthèses pour connaître leur profondeur.
     for c in expression:
         if c == "(":
             priorite += 1
@@ -30,9 +39,6 @@ def nettoyer(expression):
     if expression[0] == "(" and expression[n - 1] == ")":
         return nettoyer(expression[1:n - 1])
     return expression
-    # Les parenthèses entourent toute l'expression.
-    # On les retire, puis on recommence si nécessaire.
-    
 
 
 # Recherche un opérateur situé en dehors des parenthèses.
@@ -65,6 +71,8 @@ def decoupage_selon_operateur(expression, operateur):
 
 # Transforme une expression texte en structure récursive de calcul.
 def decoupage(expression):
+    # Retire d'abord les parenthèses qui entourent toute l'expression.
+    expression = nettoyer(expression)
     # Un nombre est un cas terminal : il ne contient pas de sous-expression.
     # "num" indique à calculer qu'il faut simplement utiliser cette valeur.
     if isnumber(expression):
@@ -83,9 +91,32 @@ def decoupage(expression):
     # L'expression n'est ni un nombre ni une opération reconnue.
     raise Exception("Aucun operateur trouve, ERREUR SYNTAX")
     
-# Évalue l'expression fournie.
-def calculer(s):
-    pass
+# Évalue récursivement la structure produite par decoupage.
+def calculer(expression):
+    # Récupère l'opérateur grâce à l'indice OP.
+    operateur = expression[OP]
+
+    # Une structure "num" contient directement le résultat à retourner.
+    if operateur=="num":
+        return expression[G]
+
+    # Calcule récursivement les deux sous-expressions.
+    gauche = calculer(expression[G])
+    droite = calculer(expression[D])
+
+    # Applique l'opération aux deux résultats obtenus.
+    if operateur == "+":
+        return gauche + droite
+    elif operateur == "-":
+        return gauche - droite
+    elif operateur == "*":
+        return gauche * droite
+    elif operateur == "/":
+        return gauche / droite
+    elif operateur == "^":
+        return gauche ** droite
+    else:
+        raise Exception("Operateur inconnu, ERREUR SYNTAX")
 
 
 def main():
