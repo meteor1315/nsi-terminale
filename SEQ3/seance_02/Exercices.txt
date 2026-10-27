@@ -1,0 +1,83 @@
+A. Exercice 1
+
+Table FILMS :
+
+    +----+----------------------------+------------+------------+-------------+
+    | id | titre                      | realisateur| ann_sortie | note_sur_10 |
+    +----+----------------------------+------------+------------+-------------+
+    | 1  | Alien, le huitième passager| Scott      | 1979       | 10          |
+    | 2  | Dune                       | Lynch      | 1985       | 5           |
+    | 3  | 2001 : l'odyssée de l'espace| Kubrick    | 1968       | 9           |
+    | 4  | Blade Runner               | Scott      | 1982       | 10          |
+    +----+----------------------------+------------+------------+-------------+
+
+Quels sont les attributs utilisés ?
+
+    Ma réponse :
+    Les attributs utilisés sont : id, titre, realisateur, ann_sortie et note_sur_10.
+
+    Corrigé :
+    Les attributs sont : id, titre, realisateur, ann_sortie et note_sur_10.
+    Ce sont les noms des colonnes de la relation FILMS.
+
+Les enregistrements sont-ils redondants ?
+
+    Ma réponse :
+    Parciellement.
+
+    Corrigé :
+    Non, les enregistrements ne sont pas redondants. Même si la valeur « Scott »
+    apparaît deux fois dans l'attribut realisateur, les lignes correspondantes
+    décrivent deux films différents : Alien (id 1) et Blade Runner (id 4).
+    La répétition d'une valeur dans une colonne ne signifie donc pas que deux
+    enregistrements sont identiques.
+
+B. Exercice 2
+
+Table VEHICULES :
+
+    +----------------------+----------+--------+-------+------------+
+    | Immatriculation      | Marque   | Modele | Annee | Kilometrage|
+    +----------------------+----------+--------+-------+------------+
+    | CV-234-RE            | Peugeot  | 504    | 1968  | 350000     |
+    | BC-234-AB            | Citroen  | Xsara  | 1998  | 99000      |
+    | CV-234-RE            | Peugeot  | 504    | 1968  | 350000     |
+    | BD-234-RB            | Citroen  | Xsara  | 1998  | 99000      |
+    +----------------------+----------+--------+-------+------------+
+
+Lister les différents attributs de la table ci-dessus. Cette table correspond-elle à une table d'une
+base de données relationnelle ? Justifiez votre réponse.
+
+    Ma réponse :
+    Les attributs sont : Immatriculation véhicule, Marque, Modèle, Année et Kilométrage.
+    Ces attributs constitue une base de données relationnelle, ex : nous pouvons
+    associé via l'attributs Immatriculation véhicule à Kilométrage.
+
+    Corrigé :
+    Les attributs sont : Immatriculation véhicule, Marque, Modèle, Année
+    et Kilométrage.
+
+    Non, cette table ne correspond pas à une relation au sens strict, car les
+    deux lignes de données sont entièrement identiques
+    (CV-234-RE, Peugeot, 504, 1968, 350000).
+    Dans une relation, deux tuples ne doivent pas être identiques. La valeur
+    d'immatriculation CV-234-RE est également répétée, mais ce n'est pas le
+    problème principal : ce sont les deux lignes complètes qui sont
+    redondantes.
+
+Bilan personnalisé de correction
+
+    Points réussis :
+    - Les attributs des deux tableaux ont été correctement repérés.
+    - La répétition de « Scott » dans la table FILMS a été remarquée.
+    - L'idée de repérer une redondance dans la table VEHICULES était pertinente.
+
+    À améliorer :
+    - Employer « attribut » pour désigner une colonne et « enregistrement »
+      ou « tuple » pour désigner une ligne.
+    - Ne pas confondre une valeur répétée dans une colonne avec un doublon :
+      deux films peuvent avoir le même réalisateur tout en étant deux
+      enregistrements différents.
+    - Pour justifier qu'une table est relationnelle, vérifier que les lignes
+      complètes sont distinctes. Une simple association entre deux attributs
+      ne suffit pas.

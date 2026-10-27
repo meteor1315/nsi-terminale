@@ -1,0 +1,191 @@
+A.  Exercice 3 
+
+    Voici un extrait de la relation FILMS. 
+
+    Relation FILMS :
+
+    +----+-----------------------------+------------+------------+-------------+
+    | id | titre                       | realisateur| ann_sortie | note_sur_10 |
+    +----+-----------------------------+------------+------------+-------------+
+    | 1  | Alien, le huitième passager | Scott      | 1979       | 10          |
+    | 2  | Dune                        | Lynch      | 1985       | 5           |
+    | 3  | 2001 : l'odyssée de l'espace| Kubrick    | 1968       | 9           |
+    | 4  | Blade Runner                | Scott      | 1982       | 10          |
+    +----+-----------------------------+------------+------------+-------------+ 
+
+    Indiquez, en justifiant, les attributs pouvant jouer le rôle de clé primaire de cette relation. 
+
+        Ma réponse :
+        les attributs pouvant jouer le rôle de clé primaire de cette relation son id et tirtre car ils seront nécessairement toujours différent.
+
+        Corrigé :
+        L'attribut id peut jouer le rôle de clé primaire car chaque valeur est
+        unique et permet d'identifier une seule ligne.
+
+        Dans cet extrait, titre et ann_sortie sont également uniques. Ils
+        pourraient donc identifier les lignes de cet extrait, mais ce ne sont
+        pas de bons choix en général : plusieurs films peuvent avoir le même
+        titre ou sortir la même année. L'attribut realisateur n'est pas unique
+        car Scott apparaît pour deux films. La note ne convient pas non plus,
+        car la valeur 10 apparaît deux fois.
+
+
+B. Exercice 4
+
+    Voici deux relations extraites d’une base de données d’une maison d’édition : 
+
+    Relation AUTEURS :
+
+    +----+----------+----------------+--------------+----------------+
+    | id | nom      | prenom         | ann_naissance| langue_ecriture|
+    +----+----------+----------------+--------------+----------------+
+    | 1  | Orwell   | George         | 1903         | anglais        |
+    | 2  | Herbert  | Frank          | 1920         | anglais        |
+    | 3  | Asimov   | Isaac          | 1920         | anglais        |
+    | 4  | Huxley   | Aldous         | 1894         | anglais        |
+    | 5  | Bradbury | Ray            | 1920         | anglais        |
+    | 6  | K.Dick   | Philip         | 1928         | anglais        |
+    | 7  | Barjavel | René           | 1911         | français       |
+    | 8  | Boulle   | Pierre         | 1912         | français       |
+    | 9  | Van Vogt | Alfred Elton   | 1912         | anglais        |
+    | 10 | Verne    | Jules          | 1828         | français       |
+    +----+----------+----------------+--------------+----------------+
+
+    Relation LIVRES :
+
+    +----+----------------------------+----------+----------+------+
+    | id | titre                      | id_auteur| ann_publi| note |
+    +----+----------------------------+----------+----------+------+
+    | 1  | 1984                       | 1        | 1949     | 10   |
+    | 2  | Dune                       | 2        | 1965     | 8    |
+    | 3  | Fondation                  | 3        | 1951     | 9    |
+    | 4  | Le meilleur des mondes     | 4        | 1931     | 7    |
+    | 5  | Fahrenheit 451             | 5        | 1953     | 7    |
+    | 6  | Ubik                       | 6        | 1969     | 9    |
+    | 7  | Chroniques martiennes      | 5        | 1950     | 8    |
+    | 8  | La nuit des temps          | 7        | 1968     | 7    |
+    | 9  | Blade Runner               | 6        | 1968     | 8    |
+    | 10 | Les Robots                 | 3        | 1950     | 9    |
+    | 11 | La Planète des singes      | 8        | 1963     | 8    |
+    | 12 | Ravage                     | 7        | 1943     | 8    |
+    | 13 | Le Maître du Haut Château  | 6        | 1962     | 8    |
+    | 14 | Le monde des A             | 9        | 1945     | 7    |
+    | 15 | La Fin de l’éternité       | 3        | 1955     | 8    |
+    | 16 | De la Terre à la Lune      | 10       | 1865     | 10   |
+    +----+----------------------------+----------+----------+------+
+
+
+    
+1. Dans la relation AUTEURS, identifiez l’attribut étant une clef primaire. 
+
+    Ma réponse :
+    Dans la relation AUTEURS l'attribut nom est la clef primaire. 
+
+    Corrigé :
+    L'attribut id est la clé primaire : chaque auteur possède un identifiant
+    différent. L'attribut nom ne convient pas, car un même nom peut appartenir
+    à plusieurs auteurs. Un couple (nom, prenom) pourrait éventuellement être
+    choisi si l'on garantit qu'il n'existe pas d'homonymes parfaits.
+
+2. Dans la relation LIVRES, identifiez quels sont les attributs pouvant être une clef primaire. 
+
+    Ma réponse :
+    les attributs pouvant être une clef primaire sont id_auteur et ann_publi
+
+    Corrigé :
+    L'attribut id est une clé primaire possible, car ses valeurs sont toutes
+    différentes. L'attribut titre peut aussi identifier les livres dans cet
+    extrait, mais l'id est préférable car deux livres pourraient porter le
+    même titre. id_auteur et ann_publi ne conviennent pas : plusieurs livres
+    peuvent avoir le même auteur ou être publiés la même année.
+
+
+3. Déterminez l’auteur du livre dont le titre est La Planète des singes.  
+
+    Ma réponse :
+    L'auteur du livre est Pierre Boulle.
+
+    Corrigé :
+    Dans LIVRES, le titre « La Planète des singes » correspond à id=11 et
+    id_auteur=8. Dans AUTEURS, l'auteur dont id=8 est Boulle, Pierre.
+    L'auteur est donc Pierre Boulle.
+
+4. Déterminez, si elle existe, une clé étrangère de la relation LIVRES. Justifiez.  
+
+    Ma réponse : 
+    La clé étrangère de la relation LIVRES est id_auteur car elle proviens d'une autre relation. 
+
+    Corrigé :
+    id_auteur est une clé étrangère de LIVRES : elle fait référence à l'attribut
+    id, qui est la clé primaire de la relation AUTEURS. Elle permet donc de
+    relier chaque livre à son auteur.
+
+
+C. Exercice 5 - avec Relation LIVRES 
+
+1. Quelle sera la relation obtenue en effectuant π_id,titre,note ( LIVRES ) ? 
+     
+    je n'ai pas trouvé le vocabulaire pour exprimer π_id,titre,note ( LIVRES )
+
+Corrigé :
+π (pi) représente une projection : on conserve uniquement les attributs
+indiqués, ici id, titre et note.
+
++----+----------------------------+------+
+| id | titre                      | note |
++----+----------------------------+------+
+| 1  | 1984                       | 10   |
+| 2  | Dune                       | 8    |
+| 3  | Fondation                  | 9    |
+| 4  | Le meilleur des mondes     | 7    |
+| 5  | Fahrenheit 451             | 7    |
+| 6  | Ubik                       | 9    |
+| 7  | Chroniques martiennes      | 8    |
+| 8  | La nuit des temps          | 7    |
+| 9  | Blade Runner               | 8    |
+| 10 | Les Robots                 | 9    |
+| 11 | La Planète des singes      | 8    |
+| 12 | Ravage                     | 8    |
+| 13 | Le Maître du Haut Château  | 8    |
+| 14 | Le monde des A             | 7    |
+| 15 | La Fin de l'éternité       | 8    |
+| 16 | De la Terre à la Lune      | 10   |
++----+----------------------------+------+
+
+2. Quelle sera la relation obtenue en effectuant σ_note = 8 ( LIVRES ) ?
+
+je n'ai pas trouvé le vocabulaire pour exprimer σ_note = 8 ( LIVRES )  
+
+Corrigé :
+σ (sigma) représente une sélection : on conserve uniquement les lignes
+dont la note est égale à 8.
+
++----+----------------------------+----------+----------+------+
+| id | titre                      | id_auteur| ann_publi| note |
++----+----------------------------+----------+----------+------+
+| 2  | Dune                       | 2        | 1965     | 8    |
+| 7  | Chroniques martiennes      | 5        | 1950     | 8    |
+| 9  | Blade Runner               | 6        | 1968     | 8    |
+| 11 | La Planète des singes      | 8        | 1963     | 8    |
+| 12 | Ravage                     | 7        | 1943     | 8    |
+| 13 | Le Maître du Haut Château  | 6        | 1962     | 8    |
+| 15 | La Fin de l'éternité       | 3        | 1955     | 8    |
++----+----------------------------+----------+----------+------+
+
+Bilan personnalisé de correction
+
+Points réussis :
+- Tu as correctement identifié l'auteur de « La Planète des singes ».
+- Tu as repéré id_auteur comme l'attribut qui relie LIVRES à AUTEURS.
+- Tu as compris que les opérations de l'exercice 5 produisent une nouvelle
+  relation à partir de LIVRES.
+
+À améliorer :
+- Pour trouver une clé primaire, vérifier que l'attribut identifie chaque
+  ligne de manière unique. Un nom, une année ou un auteur peuvent être
+  répétés.
+- Ne pas confondre clé primaire et clé étrangère : id identifie une ligne
+  dans sa propre relation, tandis que id_auteur fait référence à une autre
+  relation.
+- Retenir le vocabulaire des opérations : π sélectionne des colonnes
+  (projection) et σ sélectionne des lignes selon une condition.
