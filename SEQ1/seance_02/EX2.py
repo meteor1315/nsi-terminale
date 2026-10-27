@@ -20,7 +20,7 @@ def premier_file(file):
 
 def retirer_file(file): 
     if premier_file(file): 
-       
+        pass
     else:  
         return None
 
