@@ -1,15 +1,19 @@
-import sqlite3 
-bdd = sqlite3.connect("ma_bdd.db") #création du fichier de base de données
-requete = bdd.cursor() #création d'un 'curseur' qui permet d'écrire des requêtes
+from pathlib import Path
+import sqlite3
+
+
+chemin_bdd = Path(__file__).resolve().parents[2] / "ma_bdd.db"
+bdd = sqlite3.connect(chemin_bdd)
+requete = bdd.cursor()
 requete.execute("""
-CREATE TABLE LIVRES (
+CREATE TABLE IF NOT EXISTS LIVRES (
     id INTEGER,
     titre TEXT,
     auteur TEXT,
     ann_publi INTEGER, 
     note INTEGER)                                
-""") #la requête que l'on veut exécuter
-bdd.commit() #on valide dans le fichier de la BDD, la requête.
+""")
+bdd.commit()
 
 """ 
 Que doit on écrire dans Executer le SQL, pour créer une relation ESSAI ayant pour attributs ?
@@ -19,12 +23,12 @@ Que doit on écrire dans Executer le SQL, pour créer une relation ESSAI ayant p
 """
 
 requete.execute("""
-CREATE TABLE ESSAI (
+CREATE TABLE IF NOT EXISTS ESSAI (
     id INTEGER,
     annee INTEGER,
     nom TEXT)                                
 """) 
-bdd.commit() 
+bdd.commit()
 
 """ 
 On désire créer une relation AUTEURS ayant pour attributs :
@@ -36,11 +40,12 @@ On désire créer une relation AUTEURS ayant pour attributs :
 """ 
 
 requete.execute("""
-CREATE TABLE AUTEURS  (
+CREATE TABLE IF NOT EXISTS AUTEURS  (
     id INT PRIMARY KEY, 
-    nom CHAR(25) NOT NULL, 
-    prenom CHAR(10))
+    nom TEXT NOT NULL CHECK (length(nom) BETWEEN 1 AND 25), 
+    prenom TEXT CHECK (length(prenom) <= 10))
 """)   
+bdd.commit()
 
 """ 
 On désire créer une base de données nommée BASE2. Puis on souhaite créer une relation NOTES d’attributs :
@@ -49,10 +54,11 @@ On désire créer une base de données nommée BASE2. Puis on souhaite créer un
     - Note nommé note qui est un réel non vide
     - Identifiant nommé id qui est un entier, non vide et clé primaire.
 """  
-requete.execute(""" 
-CREATE DATABASE BASE2
-CREATE TABLE Notes  (
-    mat CHAR(15) NOY NULL, 
-    note REAL NOT NULL, 
+requete.execute("""
+CREATE TABLE IF NOT EXISTS NOTES (
+    mat TEXT NOT NULL CHECK (length(mat) BETWEEN 1 AND 15),
+    note REAL NOT NULL,
     id INTEGER NOT NULL PRIMARY KEY)
 """)  
+bdd.commit()
+bdd.close()
