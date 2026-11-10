@@ -1,0 +1,20 @@
+
+Exercice 1 : 
+
+    A quoi sert un SGBD ? 
+
+        À éditer, modifier/géré une base de donné relationelle SQL
+
+Exercice 2 : 
+
+    Expliquer le principe d’Atomicité que doit respecter un SGBD relationnel. 
+
+        Le principe d'Atomicité d'un SGBD relationnel prevois que toute actions de trasaction (COMMIT) 
+        doivent se réaliser en totalité ou être annulées (Rollback) en totalité. 
+
+Exercice 3 :
+
+    Que doit-on faire pour que les transactions effectuées soient enregistrées ? 
+
+        Ils daut faire un COMMIT des transactions pour quelle soit enregistrées. 
+
