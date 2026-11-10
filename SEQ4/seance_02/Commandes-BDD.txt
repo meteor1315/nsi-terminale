@@ -1,0 +1,16 @@
+
+Créer une vue : 
+    Il faut utiliser la commande SELECT en respectant la syntaxe suivante:
+    SELECT attribut1, attribut2,… FROM table WHERE condition 
+
+Effacer un enregistrement
+    Il faut utiliser la commande DELETE avec la syntaxe suivante:
+    DELETE FROM table WHERE condition
+
+Modifier un enregistrement
+    Il faut utiliser la commande UPDATE avec la syntaxe suivante:
+    UPDATE table SET attribut1=nouvelle_valeur WHERE condition
+
+Enregistrer des données
+    Il faut utiliser la commande INSERT TO avec la syntaxe suivante:
+    INSERT INTO table(attribut1, attribut2 …) VALUES (valeur1, valeur2…)
