@@ -6,9 +6,9 @@ Relation FILMS
 
 | id | titre                         | realisateur | ann_sortie | note_sur_10 |
 |----|-------------------------------|-------------|------------|-------------|
-| 1  | Alien, le huitième passager  | Scott       | 1979       | 10          |
+| 1  | Alien, le huitième passager   | Scott       | 1979       | 10          |
 | 2  | Dune                          | Lynch       | 1985       | 5           |
-| 3  | 2001 : l'odyssée de l'espace | Kubrick     | 1968       | 9           |
+| 3  | 2001 : l'odyssée de l'espace  | Kubrick     | 1968       | 9           |
 | 4  | Blade Runner                  | Scott       | 1982       | 10          |
 
 Relation LIVRES
